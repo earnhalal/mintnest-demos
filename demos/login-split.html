@@ -156,5 +156,34 @@
     return false;
   }
 </script>
+
+<!-- swarm-rebuild -->
+<script>
+(function(){try{
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var SEL=['header','.hero > *','section > *','.grid > *','.cards > *','.menu-grid > *','.gallery > *'];
+var seen=[],els=[];
+SEL.forEach(function(sel){document.querySelectorAll(sel).forEach(function(el){
+if(seen.indexOf(el)>-1)return;
+var root=el.closest?el.closest('[data-rbroot]'):null;
+if(root&&root!==el)return;
+if(el.classList&&el.classList.contains('reveal'))return;
+el.setAttribute('data-rbroot','1');seen.push(el);els.push(el);
+});});
+if(!els.length)return;
+var st=document.createElement('style');
+st.textContent='.rb-from{opacity:0!important;transform:translate(var(--rbx,0),var(--rby,24px)) rotate(var(--rbr,0deg)) scale(.94)!important;}.rb-in{opacity:1!important;transform:none!important;transition:opacity .65s ease,transform .65s cubic-bezier(.2,.85,.3,1.15)!important;}';
+document.head.appendChild(st);
+function prep(el){var dirs=[[-46,10,-5],[46,10,5],[0,-38,-3],[0,44,3],[-30,30,4],[30,30,-4]];var d=dirs[Math.floor(Math.random()*dirs.length)];el.style.setProperty('--rbx',d[0]+'px');el.style.setProperty('--rby',d[1]+'px');el.style.setProperty('--rbr',d[2]+'deg');el.classList.add('rb-from');}
+function play(el){requestAnimationFrame(function(){requestAnimationFrame(function(){el.classList.add('rb-in');setTimeout(function(){el.classList.remove('rb-from');el.classList.remove('rb-in');el.style.removeProperty('--rbx');el.style.removeProperty('--rby');el.style.removeProperty('--rbr');},820);});});}
+var vh=window.innerHeight||800,first=[],rest=[];
+els.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<vh*0.92&&r.bottom>0)first.push(el);else rest.push(el);});
+els.forEach(prep);
+first.slice(0,16).forEach(function(el,i){setTimeout(function(){play(el);},90*i+60);});
+first.slice(16).forEach(function(el){el.classList.remove('rb-from');});
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){play(e.target);io.unobserve(e.target);}});},{threshold:.1});rest.forEach(function(el){io.observe(el);});}
+else{rest.forEach(function(el){el.classList.remove('rb-from');});}
+}catch(err){}})();
+</script>
 </body>
 </html>
