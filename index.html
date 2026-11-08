@@ -24,9 +24,9 @@
 
   /* ---------- header ---------- */
   header{position:sticky;top:0;z-index:80;background:rgba(8,18,14,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)}
-  .nav{display:flex;align-items:center;gap:26px;padding:14px 0}
-  .logo{display:flex;align-items:center;gap:11px;text-decoration:none;font-family:'Fraunces',serif;font-weight:900;font-size:1.32rem;letter-spacing:.2px}
-  .logo .mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,#14532d,#0f766e);display:grid;place-items:center;box-shadow:0 6px 18px rgba(20,83,45,.5), inset 0 0 0 1px rgba(212,175,55,.45)}
+  .nav{display:flex;align-items:center;gap:26px;padding:9px 0}
+  .logo{display:flex;align-items:center;gap:11px;text-decoration:none;font-family:'Fraunces',serif;font-weight:900;font-size:1.14rem;letter-spacing:.2px}
+  .logo .mark{width:32px;height:32px;border-radius:12px;background:linear-gradient(145deg,#14532d,#0f766e);display:grid;place-items:center;box-shadow:0 6px 18px rgba(20,83,45,.5), inset 0 0 0 1px rgba(212,175,55,.45)}
   .logo em{font-style:normal;color:var(--gold)}
   .nav .links{display:none;gap:24px;margin-left:auto}
   @media(min-width:860px){.nav .links{display:flex}}
@@ -36,14 +36,14 @@
   @media(min-width:860px){.nav .cta{margin-left:0}}
 
   /* ---------- hero ---------- */
-  .hero{position:relative;padding:74px 0 40px;text-align:center;background:
+  .hero{position:relative;padding:42px 0 30px;text-align:center;background:
     radial-gradient(720px 380px at 15% -60px, rgba(52,211,153,.20), transparent 65%),
     radial-gradient(820px 420px at 88% -40px, rgba(212,175,55,.16), transparent 65%),
     linear-gradient(180deg, var(--bg2), var(--bg))}
   .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
   .kick{display:inline-flex;align-items:center;gap:8px;background:rgba(212,175,55,.10);border:1px solid var(--line);color:var(--gold2);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;padding:7px 15px;border-radius:999px}
   .kick i{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 10px var(--mint)}
-  .hero h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.5rem,6.4vw,4.3rem);line-height:1.05;max-width:880px;margin:22px auto 18px}
+  .hero h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(1.95rem,4.6vw,2.85rem);line-height:1.05;max-width:880px;margin:22px auto 18px}
   .hero h1 .gold{background:linear-gradient(100deg,var(--gold2),var(--gold) 55%,#9a7b24);-webkit-background-clip:text;background-clip:text;color:transparent}
   .hero p{color:var(--muted);font-size:clamp(1rem,2.2vw,1.16rem);max-width:640px;margin:0 auto 30px}
   .hero .btns{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
@@ -51,25 +51,10 @@
   .btn:hover{transform:translateY(-2px)}
   .btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold) 60%,#a37f27);color:#191304;box-shadow:0 12px 30px rgba(212,175,55,.35)}
   .btn-ghost{border:1.5px solid rgba(255,255,255,.28);color:var(--ink);background:rgba(255,255,255,.03)}
-  .stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+  .stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
   .stat{background:rgba(255,255,255,.04);border:1px solid var(--line2);border-radius:14px;padding:10px 20px;min-width:132px}
   .stat b{display:block;font-family:'Fraunces',serif;font-size:1.35rem;color:var(--gold2)}
   .stat span{font-size:.78rem;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-
-  /* ---------- live stage ---------- */
-  .stage{max-width:980px;margin:46px auto 0;position:relative}
-  .stage .frame{background:#0a0f0d;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.55), 0 0 0 8px rgba(212,175,55,.05)}
-  .stage .bar{display:flex;align-items:center;gap:8px;padding:11px 16px;background:#101613;border-bottom:1px solid var(--line2)}
-  .stage .bar i{width:11px;height:11px;border-radius:50%;background:#2a352e}
-  .stage .bar i:first-child{background:#b4503f}.stage .bar i:nth-child(2){background:#c9a24b}.stage .bar i:nth-child(3){background:#3f9e63}
-  .stage .bar .url{margin-left:10px;background:#0a0f0d;border:1px solid var(--line2);color:var(--muted);font-size:.78rem;padding:4px 12px;border-radius:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .stage iframe{width:100%;height:520px;border:0;display:block;background:#fff}
-  @media(max-width:640px){.stage iframe{height:460px}}
-  .stage .tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
-  .stage .tab{border:1px solid var(--line2);background:rgba(255,255,255,.04);color:var(--muted);font:inherit;font-weight:700;font-size:.88rem;padding:9px 17px;border-radius:999px;cursor:pointer}
-  .stage .tab.active{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#191304;border-color:transparent}
-  .stage .hint{margin-top:12px;color:var(--muted);font-size:.88rem}
-  .stage .hint b{color:var(--gold2)}
 
   /* ---------- sections ---------- */
   section{padding:78px 0}
@@ -173,20 +158,7 @@
       <div class="stat"><b>$60</b><span>Starting price</span></div>
     </div>
 
-    <!-- live stage: a real working demo, right here -->
-    <div class="stage reveal">
-      <div class="tabs" id="stageTabs">
-        <button class="tab active" data-src="demos/restaurant.html" data-name="Luigi's Trattoria — Restaurant demo">Restaurant</button>
-        <button class="tab" data-src="demos/cafe-bakery.html" data-name="The Corner Crust Café — Café demo">Café &amp; Bakery</button>
-        <button class="tab" data-src="demos/diner.html" data-name="The Golden Catch — Fish &amp; Chips demo">Fish &amp; Chips</button>
-        <button class="tab" data-src="demos/store.html" data-name="Ember &amp; Oak — Online store demo">Online Store</button>
-      </div>
-      <div class="frame">
-        <div class="bar"><i></i><i></i><i></i><span class="url" id="stageName">Luigi's Trattoria — Restaurant demo · live &amp; working</span></div>
-        <iframe id="stageFrame" src="demos/restaurant.html" title="Live working website demo" loading="lazy"></iframe>
-      </div>
-      <p class="hint">👆 This is a <b>real, working website</b> — scroll it, open its menu, tap its buttons. Yours will look this good, with <b>your</b> name on it.</p>
-    </div>
+
   </div>
 </div>
 
@@ -417,17 +389,6 @@
         var show = (f === "all") || (f.split(" ").indexOf(card.getAttribute("data-cat")) !== -1);
         card.classList.toggle("hidden", !show);
       });
-    });
-  });
-  /* live stage tabs */
-  var frame = document.getElementById("stageFrame");
-  var stageName = document.getElementById("stageName");
-  document.querySelectorAll("#stageTabs .tab").forEach(function(tab){
-    tab.addEventListener("click", function(){
-      document.querySelectorAll("#stageTabs .tab").forEach(function(t){ t.classList.remove("active"); });
-      tab.classList.add("active");
-      frame.src = tab.getAttribute("data-src");
-      stageName.textContent = tab.getAttribute("data-name") + " · live & working";
     });
   });
   /* reveal on scroll */
