@@ -236,7 +236,7 @@ var q=new URLSearchParams(location.search);
 var name=q.get('name'),tag=q.get('tagline'),city=q.get('city'),phone=q.get('phone'),email=q.get('email'),th=q.get('th'),lvl=q.get('lvl');
 if(!name&&!tag&&!city&&!phone&&!email&&!th&&!lvl)return;
 function walk(fn){var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);var n,list=[];while(n=w.nextNode())list.push(n);list.forEach(fn);}
-if(name){CFG.names.forEach(function(dn){walk(function(node){if(node.nodeValue.indexOf(dn)>-1)node.nodeValue=node.nodeValue.split(dn).join(name);});});document.title=name+(city?" \u00b7 "+city:"");}
+if(name){CFG.names.forEach(function(dn){walk(function(node){if(node.nodeValue.indexOf(dn)>-1)node.nodeValue=node.nodeValue.split(dn).join(name);});var up=dn.toUpperCase();if(up!==dn){var un=name.toUpperCase();walk(function(node){if(node.nodeValue.indexOf(up)>-1)node.nodeValue=node.nodeValue.split(up).join(un);});}});document.title=name+(city?" \u00b7 "+city:"");}
 if(city&&CFG.city){walk(function(node){if(node.nodeValue.indexOf(CFG.city)>-1)node.nodeValue=node.nodeValue.split(CFG.city).join(city);});}
 if(phone){var tel='tel:+'+phone.replace(/[^\d]/g,'');(CFG.phones||[]).forEach(function(dp){walk(function(node){if(node.nodeValue.indexOf(dp)>-1)node.nodeValue=node.nodeValue.split(dp).join(phone);});});document.querySelectorAll('a[href^="tel:"]').forEach(function(a){a.setAttribute('href',tel);});}
 if(email){document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){a.setAttribute('href','mailto:'+email);if(a.textContent.indexOf('@')>-1)a.textContent=email;});}
