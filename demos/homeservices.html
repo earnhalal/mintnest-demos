@@ -227,17 +227,19 @@ el.setAttribute('data-rbroot','1');seen.push(el);els.push(el);
 });});
 if(!els.length)return;
 var st=document.createElement('style');
-st.textContent='.rb-from{opacity:0!important;transform:translate(var(--rbx,0),var(--rby,24px)) rotate(var(--rbr,0deg)) scale(.94)!important;}.rb-in{opacity:1!important;transform:none!important;transition:opacity .65s ease,transform .65s cubic-bezier(.2,.85,.3,1.15)!important;}';
+st.textContent='.rb-from{opacity:0!important;transform:translate(var(--rbx,0),var(--rby,26px)) rotate(var(--rbr,0deg)) scale(.93)!important;}.rb-in{opacity:1!important;transform:none!important;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.85,.3,1.15)!important;}';
 document.head.appendChild(st);
-function prep(el){var dirs=[[-46,10,-5],[46,10,5],[0,-38,-3],[0,44,3],[-30,30,4],[30,30,-4]];var d=dirs[Math.floor(Math.random()*dirs.length)];el.style.setProperty('--rbx',d[0]+'px');el.style.setProperty('--rby',d[1]+'px');el.style.setProperty('--rbr',d[2]+'deg');el.classList.add('rb-from');}
-function play(el){requestAnimationFrame(function(){requestAnimationFrame(function(){el.classList.add('rb-in');setTimeout(function(){el.classList.remove('rb-from');el.classList.remove('rb-in');el.style.removeProperty('--rbx');el.style.removeProperty('--rby');el.style.removeProperty('--rbr');},820);});});}
+function prep(el){var dirs=[[-70,14,-6],[70,14,6],[0,-56,-4],[0,64,4],[-48,44,5],[48,44,-5]];var d=dirs[Math.floor(Math.random()*dirs.length)];el.style.setProperty('--rbx',d[0]+'px');el.style.setProperty('--rby',d[1]+'px');el.style.setProperty('--rbr',d[2]+'deg');el.classList.add('rb-from');}
+function play(el){setTimeout(function(){el.classList.add('rb-in');setTimeout(function(){el.classList.remove('rb-from');el.classList.remove('rb-in');el.style.removeProperty('--rbx');el.style.removeProperty('--rby');el.style.removeProperty('--rbr');},750);},20);}
+function sweep(){els.forEach(function(el){el.classList.remove('rb-from');el.classList.remove('rb-in');});}
+setTimeout(sweep,2600);
 var vh=window.innerHeight||800,first=[],rest=[];
 els.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<vh*0.92&&r.bottom>0)first.push(el);else rest.push(el);});
-els.forEach(prep);
-first.slice(0,16).forEach(function(el,i){setTimeout(function(){play(el);},90*i+60);});
-first.slice(16).forEach(function(el){el.classList.remove('rb-from');});
-if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){play(e.target);io.unobserve(e.target);}});},{threshold:.1});rest.forEach(function(el){io.observe(el);});}
-else{rest.forEach(function(el){el.classList.remove('rb-from');});}
+first.slice(0,16).forEach(function(el,i){prep(el);setTimeout(function(){play(el);},100*i+80);});
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target;io.unobserve(el);prep(el);play(el);}});},{threshold:.08});
+rest.forEach(function(el){io.observe(el);});
+}
 }catch(err){}})();
 </script>
 
